@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * -printf - This function prints variable n. or argument
+ * _printf - This function prints variable n. or argument
  * like the standard printf function
  * @format: argument to be printed
  * @...: An ellipse of other argument
