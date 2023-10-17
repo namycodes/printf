@@ -43,10 +43,10 @@ int _write_integer(int n)
 	return (write(1, buffer, length));
 }
 /**
- * _printf - This function prints variable n. or argument
+ * _printf - This function prints variable no. of argument
  * like the standard printf function
  * @format: argument to be printed
- * @...: An ellipse of other argument
+ * @...: An ellipse of others argument
  * Return: Total character count
  */
 int _printf(const char *format, ...)
@@ -81,12 +81,6 @@ int _printf(const char *format, ...)
 				char *str = va_arg(no_input_args, char*);
 
 				chr_count += _write_string(str);
-			}
-			else if (*format == 'd' || *format == 'i')
-			{
-				int number = va_arg(no_input_args, int);
-
-				chr_count += _write_integer(number);
 			}
 			else if (*format == '%')
 			{
