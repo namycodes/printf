@@ -29,9 +29,9 @@ int _write_percent(void)
 {
 	return (write(1, "%", 1));
 }
-/** 
- * _write_interger - Writes an interger to stdout
- * @n: The interger to be written
+/**
+ * _write_integer - Writes an interger to stdout
+ * @n: The integer to be written
  * Return: The number of characters written to buffer
  */
 int _write_integer(int n)
