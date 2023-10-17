@@ -1,11 +1,34 @@
 #include "main.h"
 /**
+ * _write_char - Writes a character to stdout.
+ * @c: The character to be written.
+ * Return: The number of characters written.
+ */
+int _write_char(char c)
+{
+	return (write(1, &c, 1));
+}
+/**
+ * _write_string - Writes a string to stdout.
+ * @str: The string to be written.
+ * Return: The number of characters written.
+ */
+int _write_string(const char *str)
+{
+	int str_len = 0;
+
+	while (str[str_len] != '\0')
+		str_len++;
+	return (write(1, str, str_len));
+}
+/**
  * _printf - This function prints variable n. or argument
  * like the standard printf function
  * @format: argument to be printed
  * @...: An ellipse of other argument
  * Return: Total character count
  */
+
 int _printf(const char *format, ...)
 {
 	int chr_count = 0;
@@ -14,13 +37,11 @@ int _printf(const char *format, ...)
 	if (format == NULL)
 		return (-1);
 	va_start(no_input_args, format);
-
 	while (*format)
 	{
 		if (*format != '%')
 		{
-			write(1, format, 1);
-			chr_count++;
+			chr_count += _write_char(*format);
 		}
 		else
 		{
@@ -33,18 +54,13 @@ int _printf(const char *format, ...)
 			{
 				char c = va_arg(no_input_args, int);
 
-				write(1, &c, 1);
-				chr_count++;
+				chr_count += _write_char(c);
 			}
 			else if (*format == 's')
 			{
 				char *str = va_arg(no_input_args, char*);
-				int str_len = 0;
 
-				while (str[str_len] != '\0')
-					str_len++;
-				write(1, str, str_len);
-				chr_count += str_len;
+				chr_count += _write_string(str);
 			}
 			else if (*format == '%')
 			{
