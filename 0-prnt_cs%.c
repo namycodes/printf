@@ -25,12 +25,22 @@ int _write_string(const char *str)
  * _write_percent - Writes a % character to stdout.
  * Return: The number of characters written.
  */
-
 int _write_percent(void)
 {
 	return (write(1, "%", 1));
 }
+/** 
+ * _write_interger - Writes an interger to stdout
+ * @n: The interger to be written
+ * Return: The number of characters written to buffer
+ */
+int _write_integer(int n)
+{
+	char buffer[32];
+	int length = snprintf(buffer, sizeof(buffer), "%d", n);
 
+	return (write(1, buffer, legth));
+}
 /**
  * _printf - This function prints variable n. or argument
  * like the standard printf function
@@ -38,7 +48,6 @@ int _write_percent(void)
  * @...: An ellipse of other argument
  * Return: Total character count
  */
-
 int _printf(const char *format, ...)
 {
 	int chr_count = 0;
@@ -71,6 +80,12 @@ int _printf(const char *format, ...)
 				char *str = va_arg(no_input_args, char*);
 
 				chr_count += _write_string(str);
+			}
+			else if (*format == 'd' || *format == 'i')
+			{
+				int number = var_arg(args, int);
+
+				chr_count += _write_interger(num);
 			}
 			else if (*format == '%')
 			{
