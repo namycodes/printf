@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "main.h"
 /**
  * _write_char - Writes a character to stdout.
@@ -39,7 +40,7 @@ int _write_integer(int n)
 	char buffer[32];
 	int length = snprintf(buffer, sizeof(buffer), "%d", n);
 
-	return (write(1, buffer, legth));
+	return (write(1, buffer, length));
 }
 /**
  * _printf - This function prints variable n. or argument
@@ -83,9 +84,9 @@ int _printf(const char *format, ...)
 			}
 			else if (*format == 'd' || *format == 'i')
 			{
-				int number = var_arg(args, int);
+				int number = va_arg(no_input_args, int);
 
-				chr_count += _write_interger(num);
+				chr_count += _write_integer(number);
 			}
 			else if (*format == '%')
 			{
