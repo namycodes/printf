@@ -22,6 +22,16 @@ int _write_string(const char *str)
 	return (write(1, str, str_len));
 }
 /**
+ * _write_percent - Writes a % character to stdout.
+ * Return: The number of characters written.
+ */
+
+int _write_percent(void)
+{
+	return (write(1, "%", 1));
+}
+
+/**
  * _printf - This function prints variable n. or argument
  * like the standard printf function
  * @format: argument to be printed
@@ -64,8 +74,7 @@ int _printf(const char *format, ...)
 			}
 			else if (*format == '%')
 			{
-				write(1, format, 1);
-				chr_count++;
+				chr_count += _write_percent();
 			}
 		}
 		format++;
